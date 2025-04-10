@@ -1,17 +1,14 @@
-# fluent-plugin-parser_cef
+# fluent-plugin-parser_cefalt
 
-[![Gem Version](https://badge.fury.io/rb/fluent-plugin-parser_cef.svg)](https://badge.fury.io/rb/fluent-plugin-parser_cef)
-[![Build Status](https://travis-ci.org/lunardial/fluent-plugin-parser_cef.svg?branch=master)](https://travis-ci.org/lunardial/fluent-plugin-parser_cef)
-[![Maintainability](https://api.codeclimate.com/v1/badges/9dc37fceb1caff2c0070/maintainability)](https://codeclimate.com/github/lunardial/fluent-plugin-parser_cef/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/lunardial/fluent-plugin-parser_cef/badge.svg?branch=master)](https://coveralls.io/github/lunardial/fluent-plugin-parser_cef?branch=master)
-[![downloads](https://img.shields.io/gem/dt/fluent-plugin-parser_cef.svg)](https://rubygems.org/gems/fluent-plugin-parser_cef)
+[![Gem Version](https://badge.fury.io/rb/fluent-plugin-parser_cefalt.svg)](https://badge.fury.io/rb/fluent-plugin-parser_cefalt)
+[![downloads](https://img.shields.io/gem/dt/fluent-plugin-parser_cefalt.svg)](https://rubygems.org/gems/fluent-plugin-parser_cefalt)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-Fluentd Parser plugin to parse CEF - common event format -
+Fluentd Parser plugin to parse CEF - common event format - Alternative
 
 ## Requirements
 
-| fluent-plugin-parser_cef  | fluentd | ruby |
+| fluent-plugin-parser_cefalt  | fluentd | ruby |
 |---------------------------|---------|------|
 | >= 1.0.0 | >= v0.14.0 | >= 2.1 |
 |  < 1.0.0 | >= v0.12.0 | >= 1.9 |
@@ -21,36 +18,33 @@ Fluentd Parser plugin to parse CEF - common event format -
 Add this line to your application's Gemfile:
 
 ```bash
-# for fluentd v0.12
-gem install fluent-plugin-parser_cef -v "< 1.0.0"
 
 # for fluentd v0.14 or higher
-gem install fluent-plugin-parser_cef
 
-# for td-agent2
-td-agent-gem install fluent-plugin-parser_cef -v "< 1.0.0"
+fluent-gem install fluent-plugin-parser_cefalt
 
-# for td-agent3
-td-agent-gem install fluent-plugin-parser_cef
 ```
 
 ## Usage
 
 ```
 <source>
-  @type   tail
-  tag     develop.cef
-  path      /tmp/fluentd/test.log
-  pos_file  /tmp/fluentd/test.pos
-
-  format  cef
-  #log_format  syslog
-  #syslog_timestamp_format  '\w{3}\s+\d{1,2}\s\d{2}:\d{2}:\d{2}'
-  #cef_version  0
-  #parse_strict_mode  true
-  #cef_keyfilename  'config/cef_version_0_keys.yaml'
-  #output_raw_field  false
+  @type syslog
+  port 5514
+  bind 0.0.0.0
+  <transport tcp>
+  </transport>
+  <parse>
+    @type cefalt
+    log_format syslog
+    parse_strict_mode true
+    output_raw_field false
+  </parse>
+  tag ceflog
 </source>
+<match ceflog.**>
+  @type stdout
+</match>
 ```
 
 ## parameters
@@ -69,7 +63,7 @@ td-agent-gem install fluent-plugin-parser_cef
 
 * `syslog_timestamp` (default: '\w{3}\s+\d{1,2}\s\d{2}:\d{2}:\d{2}')
 
-  syslog timestamp format, the default is traditional syslog timestamp
+* `syslog_timestamp_rfc5424` (default: '\d{4}[-]\d{2}[-]\d{2}[T]\d{2}[:]\d{2}[:]\d{2}(?:\.\d{1,6})?(?:[+-]\d{2}[:]\d{2}|Z)')
 
 * `cef_version` (default: 0)
 
