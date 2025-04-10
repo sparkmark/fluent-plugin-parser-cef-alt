@@ -8,7 +8,7 @@ require 'yaml'
 module Fluent
   module Plugin
     class CommonEventFormatParser < Parser
-      Fluent::Plugin.register_parser("cef", self)
+      Fluent::Plugin.register_parser("cefalt", self)
       config_param :log_format, :string, :default => "syslog"
       config_param :log_utc_offset, :string, :default => nil
       config_param :syslog_timestamp_format, :string, :default => '\w{3}\s+\d{1,2}\s\d{2}:\d{2}:\d{2}'
