@@ -131,6 +131,54 @@ cef_key_names_for_event_producers:
   - suid
   - suser
   - type
+  - slocation
+  - dlocation
+  - PanOSPacketsReceived
+  - PanOSPacketsSent
+  - PanOSThreatCategory
+  - PanOSThreatID
+  - PanOSThreatName
+  - PanOSThreatDomain
+  - PanOSSeverity
+  - PanOSReferer
+  - PanOSURLCatList
+  - PanOSLogTimeStamp
+  - PanOSVirtualSystem
+  - PanOSEventID
+  - PanOSStage
+  - PanOSAuthMethod
+  - PanOSTunnelType
+  - PanOSSourceUserName
+  - PanOSSourceRegion
+  - PanOSEndpointDeviceName
+  - PanOSPublicIPv4
+  - PanOSPublicIPv6
+  - PanOSPrivateIPv4
+  - PanOSPrivateIPv6
+  - PanOSHostID
+  - PanOSDeviceSN
+  - PanOSGlobalProtectClientVersion
+  - PanOSEndpointOSType
+  - PanOSEndpointOSVersion
+  - PanOSCountOfRepeats
+  - PanOSQuarantineReason
+  - PanOSConnectionError
+  - PanOSDescription
+  - PanOSEventStatus
+  - PanOSGPGatewayLocation
+  - PanOSLoginDuration
+  - PanOSConnectionMethod
+  - PanOSConnectionErrorID
+  - PanOSPortal
+  - PanOSSequenceNo
+  - PanOSActionFlags
+  - PanOSTimeGeneratedHighResolution
+  - PanOSGatewaySelectionType
+  - PanOSSSLResponseTime
+  - PanOSGatewayPriority
+  - PanOSAttemptedGateways
+  - PanOSGateway
+  - PanOSEndpointDeviceSN
 
 # CEF Key Names For Event Consumers
 cef_key_names_for_event_consumers:
