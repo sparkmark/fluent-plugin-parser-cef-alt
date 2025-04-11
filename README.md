@@ -30,7 +30,7 @@ fluent-gem install fluent-plugin-parser_cefalt
 ```
 <source>
   @type syslog
-  port 5514
+  port 514
   bind 0.0.0.0
   <transport tcp>
   </transport>
